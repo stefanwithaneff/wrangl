@@ -35,7 +35,9 @@ function useFormInputState(defaultValue = "") {
     [setValue]
   );
 
-  return { value, onChange };
+  const clearField = useCallback(() => setValue(() => ""), [setValue]);
+
+  return { value, onChange, clearField };
 }
 
 function useAppDialogFields() {
@@ -55,6 +57,12 @@ export function CreateAppDialog({ open, closeDialog }: CreateAppDialogProps) {
 
   const { title, company, location, url, description } = appDialogFields;
 
+  const clearFields = useCallback(() => {
+    for (const field of Object.values(appDialogFields)) {
+      field.clearField();
+    }
+  }, [appDialogFields]);
+
   const createApplication = useCallback(() => {
     create({
       title: title.value,
@@ -64,9 +72,11 @@ export function CreateAppDialog({ open, closeDialog }: CreateAppDialogProps) {
       description: description.value,
     });
     closeDialog();
+    clearFields();
   }, [
     create,
     closeDialog,
+    clearFields,
     title.value,
     company.value,
     location.value,

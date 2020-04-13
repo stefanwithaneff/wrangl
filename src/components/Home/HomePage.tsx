@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Container,
   makeStyles,
@@ -6,6 +6,7 @@ import {
   Button,
   Box,
 } from "@material-ui/core";
+import { AppList } from "../AppList/AppList";
 import {
   CreateAppDialog,
   useDialogControls,
@@ -32,7 +33,7 @@ export function HomePage() {
           Track your applications and receive reminders to follow up
         </Typography>
       </Box>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" justifyContent="center" mb={16}>
         <Button
           disableElevation
           color="primary"
@@ -43,6 +44,7 @@ export function HomePage() {
           Track your applications
         </Button>
       </Box>
+      <AppList />
       <CreateAppDialog open={open} closeDialog={closeDialog} />
     </Container>
   );
