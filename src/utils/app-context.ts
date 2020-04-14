@@ -4,11 +4,13 @@ import {
   useContext,
   useState,
   useCallback,
+  useEffect,
   Context,
 } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { App } from "../types/App";
+import { Applications } from "./db";
 
 type ContextExtractor<C> = C extends Context<infer O> ? O : never;
 
@@ -24,6 +26,7 @@ function decorateCreatedApp(app: AppWithoutGeneratedData): App {
 
 export const AppContext = createContext({
   apps: [] as ReadonlyArray<App>,
+  inProgress: true,
   create: (app: AppWithoutGeneratedData) => {},
   update: (id: string, payload: App) => {},
   delete: (id: string) => {},
@@ -33,12 +36,30 @@ export function useAppContext() {
   return useContext(AppContext);
 }
 
-export function useAppState(): ContextExtractor<typeof AppContext> {
+function useAppIDB() {
+  const [inProgress, setInProgress] = useState(true);
   const [apps, setApps] = useState([] as ReadonlyArray<App>);
+
+  useEffect(() => {
+    Applications.getAllApplications().then((allApps) => {
+      setApps(allApps);
+      setInProgress(false);
+    });
+  }, [setApps, setInProgress]);
+
+  return { apps, inProgress, setApps };
+}
+
+export function useAppState(): ContextExtractor<typeof AppContext> {
+  const { apps, inProgress, setApps } = useAppIDB();
 
   const createApp = useCallback(
     (app: AppWithoutGeneratedData) => {
-      setApps((apps) => [...apps, decorateCreatedApp(app)]);
+      const decoratedApp = decorateCreatedApp(app);
+      setApps((apps) => [...apps, decoratedApp]);
+      try {
+        Applications.create(decoratedApp);
+      } catch {}
     },
     [setApps]
   );
@@ -69,6 +90,7 @@ export function useAppState(): ContextExtractor<typeof AppContext> {
 
   return {
     apps,
+    inProgress,
     create: createApp,
     update: updateApp,
     delete: deleteApp,

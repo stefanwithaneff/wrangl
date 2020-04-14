@@ -30,7 +30,7 @@ function AppListBody({ apps }: { apps: ReadonlyArray<App> }) {
   return (
     <TableBody>
       {apps.map((app) => (
-        <TableRow>
+        <TableRow key={app.id}>
           <TableCell>{app.title}</TableCell>
           <TableCell>{app.company}</TableCell>
           <TableCell>{app.location}</TableCell>

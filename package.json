@@ -12,6 +12,7 @@
     "@types/react": "^16.9.32",
     "@types/react-dom": "^16.9.6",
     "@types/uuid": "^7.0.2",
+    "idb": "^5.0.2",
     "immer": "^6.0.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
