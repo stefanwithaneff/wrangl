@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/wrangl/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/wrangl/static/js/main.72cfef46.chunk.js",
+    "main.js.map": "/wrangl/static/js/main.72cfef46.chunk.js.map",
+    "runtime-main.js": "/wrangl/static/js/runtime-main.f600a0df.js",
+    "runtime-main.js.map": "/wrangl/static/js/runtime-main.f600a0df.js.map",
+    "static/js/2.a6739a96.chunk.js": "/wrangl/static/js/2.a6739a96.chunk.js",
+    "static/js/2.a6739a96.chunk.js.map": "/wrangl/static/js/2.a6739a96.chunk.js.map",
+    "index.html": "/wrangl/index.html",
+    "precache-manifest.874bee802513130b4156dc07e4d3c690.js": "/wrangl/precache-manifest.874bee802513130b4156dc07e4d3c690.js",
+    "service-worker.js": "/wrangl/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/wrangl/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.a6739a96.chunk.js.LICENSE.txt": "/wrangl/static/js/2.a6739a96.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f600a0df.js",
+    "static/js/2.a6739a96.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.72cfef46.chunk.js"
+  ]
+}
