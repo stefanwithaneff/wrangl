@@ -2,7 +2,7 @@
   "name": "wrangl",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ssallay.github.io/wrangl",
+  "homepage": "https://wrangl.app",
   "dependencies": {
     "@material-ui/core": "^4.9.10",
     "@testing-library/jest-dom": "^4.2.4",
